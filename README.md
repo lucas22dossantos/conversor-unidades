@@ -23,14 +23,14 @@ intercambio rápido entre ambas y un historial de conversiones recientes.
 ## Checklist de desarrollo
 
 ### Estructura y base
-- [ ] Estructura de carpetas y archivos
+- [x] Estructura de carpetas y archivos
 - [ ] `index.html` con maquetado base (tabs, tarjeta de conversión, historial)
 - [ ] `style.css` aplicando el sistema de diseño
 
 ### Conversión de medidas
-- [ ] Tabla de conversión de longitud como objeto de factores
+- [x] Tabla de conversión de longitud como objeto de factores
 - [ ] Tabla de conversión de peso como objeto de factores
-- [ ] Función de conversión de longitud (`longitud.js`)
+- [x] Función de conversión de longitud (`longitud.js`)
 - [ ] Función de conversión de peso (`peso.js`)
 
 ### Conversión de temperatura

@@ -23,45 +23,51 @@ intercambio rápido entre ambas y un historial de conversiones recientes.
 ## Checklist de desarrollo
 
 ### Estructura y base
+
 - [x] Estructura de carpetas y archivos
 - [ ] `index.html` con maquetado base (tabs, tarjeta de conversión, historial)
 - [ ] `style.css` aplicando el sistema de diseño
 
 ### Conversión de medidas
+
 - [x] Tabla de conversión de longitud como objeto de factores
-- [ ] Tabla de conversión de peso como objeto de factores
+- [x] Tabla de conversión de peso como objeto de factores
 - [x] Función de conversión de longitud (`longitud.js`)
-- [ ] Función de conversión de peso (`peso.js`)
+- [x] Función de conversión de peso (`peso.js`)
 
 ### Conversión de temperatura
+
 - [ ] Fórmulas de conversión Celsius ⇄ Fahrenheit ⇄ Kelvin (`temperatura.js`)
 
 ### Conversión de moneda
+
 - [ ] Definición de API externa de tasas de cambio
 - [ ] Función de conversión de moneda (`moneda.js`)
 - [ ] Manejo de errores de red y estado de carga
 
 ### Interacción y UI
+
 - [ ] Navegación por tabs entre categorías de conversión
 - [ ] Botón "Convertir" conectado a la función correspondiente
 - [ ] Botón de intercambio de unidades
 - [ ] Renderizado del resultado
 
 ### Historial
+
 - [ ] Persistencia de conversiones recientes en `localStorage`
 - [ ] Renderizado del historial en la UI
 
 ## Aspectos técnicos
 
-| Concepto | Aplicación en el proyecto |
-|---|---|
-| `reduce` | Procesamiento de datos del historial de conversiones |
-| Destructuring | Extracción de propiedades de objetos y arrays |
-| Spread/rest (`...`) | Combinación y clonado de datos sin mutación |
-| Closures | Configuración/unidad por defecto recordada entre conversiones |
-| Módulos de JS (`import`/`export`) | Separación del código por responsabilidad |
-| Funciones puras | Lógica de conversión desacoplada del DOM |
-| Objetos como tablas de conversión | Factores de conversión por categoría de unidad |
+| Concepto                          | Aplicación en el proyecto                                     |
+| --------------------------------- | ------------------------------------------------------------- |
+| `reduce`                          | Procesamiento de datos del historial de conversiones          |
+| Destructuring                     | Extracción de propiedades de objetos y arrays                 |
+| Spread/rest (`...`)               | Combinación y clonado de datos sin mutación                   |
+| Closures                          | Configuración/unidad por defecto recordada entre conversiones |
+| Módulos de JS (`import`/`export`) | Separación del código por responsabilidad                     |
+| Funciones puras                   | Lógica de conversión desacoplada del DOM                      |
+| Objetos como tablas de conversión | Factores de conversión por categoría de unidad                |
 
 ## Estructura del proyecto
 

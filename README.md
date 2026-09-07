@@ -37,7 +37,7 @@ intercambio rápido entre ambas y un historial de conversiones recientes.
 
 ### Conversión de temperatura
 
-- [ ] Fórmulas de conversión Celsius ⇄ Fahrenheit ⇄ Kelvin (`temperatura.js`)
+- [x] Fórmulas de conversión Celsius ⇄ Fahrenheit ⇄ Kelvin (`temperatura.js`)
 
 ### Conversión de moneda
 

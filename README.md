@@ -41,8 +41,8 @@ intercambio rápido entre ambas y un historial de conversiones recientes.
 
 ### Conversión de moneda
 
-- [ ] Definición de API externa de tasas de cambio
-- [ ] Función de conversión de moneda (`moneda.js`)
+- [x] Definición de API externa de tasas de cambio
+- [x] Función de conversión de moneda (`moneda.js`)
 - [ ] Manejo de errores de red y estado de carga
 
 ### Interacción y UI
@@ -95,7 +95,7 @@ conversor-unidades/
 - JavaScript (ES Modules)
 - HTML5
 - CSS3
-- API externa de tasas de cambio (a definir)
+- API externa de tasas de cambio (Frankfurter)
 
 ## Diseño
 

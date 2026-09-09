@@ -1,0 +1,36 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+:root {
+  /* colores ya definidos */
+  --color-background: #f8f9ff;
+  --color-surface: #ffffff;
+  --color-texto: #121c2a;
+  --color-texto-secundario: #4a4455;
+  --color-primario: #630ed4;
+  --color-texto-primario: #ffffff;
+  --color-borde: #ccc3d8;
+  --color-error: #ba1a1a;
+  --color-texto-error: #ffffff;
+
+  /* tipografía */
+  --fuente-principal: "Inter", sans-serif;
+
+  --tamano-headline-xl: 48px;
+  --tamano-headline-lg: 32px;
+  --tamano-body-md: 16px;
+  --tamano-label-md: 14px;
+
+  --peso-normal: 400;
+  --peso-negrita: 600;
+
+  --radio-boton: 0.5rem;
+  --radio-tarjeta: 1rem;
+
+  --espacio-sm: 8px;
+  --espacio-md: 16px;
+  --espacio-lg: 24px;
+  --espacio-xl: 32px;
+  --radio-circular: 9999px;
+}
+button {
+  background-color: var(--color-primario);
+}

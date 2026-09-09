@@ -25,7 +25,7 @@ intercambio rápido entre ambas y un historial de conversiones recientes.
 ### Estructura y base
 
 - [x] Estructura de carpetas y archivos
-- [ ] `index.html` con maquetado base (tabs, tarjeta de conversión, historial)
+- [x] `index.html` con maquetado base (tabs, tarjeta de conversión, historial)
 - [ ] `style.css` aplicando el sistema de diseño
 
 ### Conversión de medidas

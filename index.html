@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- iconos -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- estilos -->
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Conversor de Unidad</title>
+  </head>
+  <body>
+    <header>
+      <h1>UnitConvert</h1>
+
+      <nav>
+        <button class="tab activa" data-tipo="longitud">Longitud</button>
+        <button class="tab" data-tipo="peso">Peso</button>
+        <button class="tab" data-tipo="temperatura">Temperatura</button>
+        <button class="tab" data-tipo="moneda">Moneda</button>
+      </nav>
+
+      <div class="header-iconos">
+        <i data-lucide="settings"></i>
+        <i data-lucide="history"></i>
+      </div>
+    </header>
+    <main>
+      <section class="tarjeta-conversion">
+        <h2 id="titulo-conversor">Conversor de Longitud</h2>
+
+        <label for="valor-input">Valor a convertir</label>
+        <input type="number" id="valor-input" placeholder="0" />
+
+        <div class="selectores">
+          <div>
+            <label for="unidad-origen">De</label>
+            <select id="unidad-origen"></select>
+          </div>
+
+          <button id="btn-intercambiar" aria-label="Intercambiar unidades">
+            <i data-lucide="arrow-left-right"></i>
+          </button>
+
+          <div>
+            <label for="unidad-destino">A</label>
+            <select id="unidad-destino"></select>
+          </div>
+        </div>
+
+        <button id="btn-convertir">Convertir</button>
+
+        <div class="resultado">
+          <p>Resultado</p>
+          <p id="resultado-texto"></p>
+        </div>
+      </section>
+
+      <!-- Historial -->
+      <section class="historial">
+        <h2>Historial reciente</h2>
+        <ul id="lista-historial"></ul>
+      </section>
+    </main>
+
+    <script>
+      lucide.createIcons();
+    </script>
+  </body>
+</html>

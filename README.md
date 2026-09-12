@@ -47,7 +47,7 @@ intercambio rápido entre ambas y un historial de conversiones recientes.
 
 ### Interacción y UI
 
-- [ ] Navegación por tabs entre categorías de conversión
+- [x] Navegación por tabs entre categorías de conversión
 - [ ] Botón "Convertir" conectado a la función correspondiente
 - [ ] Botón de intercambio de unidades
 - [ ] Renderizado del resultado

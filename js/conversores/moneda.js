@@ -8,7 +8,7 @@
 
 export async function convertirMoneda(valor, monedaOrigen, monedaDestino) {
   try {
-    const urlMoneda = `https://api.frankfurter.app/latest?from=${monedaOrigen}&to=${monedaDestino}`;
+    const urlMoneda = `https://api.frankfurter.dev/v1/latest?from=${monedaOrigen}&to=${monedaDestino}`;
 
     // 1. Hacer el fetch a la API de Frankfurter
     const response = await fetch(urlMoneda);

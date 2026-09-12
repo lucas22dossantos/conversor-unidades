@@ -83,6 +83,24 @@ botonesTab.forEach((boton) => {
   });
 });
 
+botonConvertir.addEventListener("click", async () => {
+  const valor = parseFloat(inputValor.value);
+  const origen = selectOrigen.value;
+  const destino = selectDestino.value;
+
+  const config = configuraciones[tipoActivo];
+  const resultado = await config.funcion(valor, origen, destino);
+
+  resultadoTexto.textContent = resultado;
+});
+
+botonIntercambiar.addEventListener("click", () => {
+  [selectOrigen.value, selectDestino.value] = [
+    selectDestino.value,
+    selectOrigen.value,
+  ];
+});
+
 cambiarPestana(tipoActivo);
 
 // Mostrar el resultado en el HTML

@@ -5,7 +5,7 @@ import { convertirMoneda } from "./conversores/moneda.js";
 import { convertirPeso } from "./conversores/peso.js";
 import { convertirTemperatura } from "./conversores/temperatura.js";
 
-// Detectar qué pestaña está activa (longitud, peso, temperatura o moneda)
+// Obtener referencias a los elementos de la interfaz
 
 const inputValor = document.getElementById("valor-input");
 const selectOrigen = document.getElementById("unidad-origen");
@@ -16,8 +16,7 @@ const resultadoTexto = document.getElementById("resultado-texto");
 const tituloConversor = document.getElementById("titulo-conversor");
 const listaHistorial = document.getElementById("lista-historial");
 
-// Llenar dinámicamente los <select> con las unidades correspondientes a esa pestaña
-
+// Configurar la función y las unidades de cada tipo de conversión
 const configuraciones = {
   longitud: {
     funcion: convertirLongitud,
@@ -27,7 +26,7 @@ const configuraciones = {
   peso: {
     funcion: convertirPeso,
     unidades: ["gramo", "kilogramo", "libra"],
-    titulo: "conversor de Peso",
+    titulo: "Conversor de Peso",
   },
   temperatura: {
     funcion: convertirTemperatura,
@@ -41,7 +40,7 @@ const configuraciones = {
   },
 };
 
-// Escuchar el clic en "Convertir" y ejecutar la función correcta
+// Llenar dinámicamente los <select> con las unidades de la pestaña activa
 function llenarSelects(unidades) {
   selectOrigen.innerHTML = "";
   selectDestino.innerHTML = "";
@@ -76,6 +75,7 @@ function cambiarPestana(tipo) {
 
 const botonesTab = document.querySelectorAll(".tab");
 
+// Escuchar el clic en las pestañas y cambiar el conversor activo
 botonesTab.forEach((boton) => {
   boton.addEventListener("click", () => {
     const tipo = boton.dataset.tipo;
@@ -83,6 +83,7 @@ botonesTab.forEach((boton) => {
   });
 });
 
+// Convertir el valor usando la función de la pestaña activa
 botonConvertir.addEventListener("click", async () => {
   const valor = parseFloat(inputValor.value);
   const origen = selectOrigen.value;
@@ -91,9 +92,22 @@ botonConvertir.addEventListener("click", async () => {
   const config = configuraciones[tipoActivo];
   const resultado = await config.funcion(valor, origen, destino);
 
+  // Mostrar el resultado en el HTML
   resultadoTexto.textContent = resultado;
+
+  guardarEnHistorial({
+    valor: valor,
+    origen: origen,
+    destino: destino,
+    resultado: resultado,
+    tipo: tipoActivo,
+    fecha: new Date(),
+  });
+
+  mostrarHistorial();
 });
 
+// Intercambiar las unidades de origen y destino
 botonIntercambiar.addEventListener("click", () => {
   [selectOrigen.value, selectDestino.value] = [
     selectDestino.value,
@@ -101,6 +115,60 @@ botonIntercambiar.addEventListener("click", () => {
   ];
 });
 
-cambiarPestana(tipoActivo);
+function guardarEnHistorial(entrada) {
+  const historialGuardado = localStorage.getItem("historial");
+  const historial = historialGuardado ? JSON.parse(historialGuardado) : [];
 
-// Mostrar el resultado en el HTML
+  historial.unshift(entrada);
+
+  localStorage.setItem("historial", JSON.stringify(historial));
+}
+
+function formatearTiempoTranscurrido(fecha) {
+  const fechaReal = new Date(fecha);
+  const ahora = new Date();
+  const diferenciaMs = ahora - fechaReal;
+  const diferenciaMinutos = Math.floor(diferenciaMs / 1000 / 60);
+  const diferenciaHoras = Math.floor(diferenciaMinutos / 60);
+  const diferenciaDias = Math.floor(diferenciaHoras / 24);
+
+  if (diferenciaMinutos < 1) {
+    return "Recién";
+  } else if (diferenciaHoras < 1) {
+    return `Hace ${diferenciaMinutos} min`;
+  } else if (diferenciaDias < 1) {
+    return `Hace ${diferenciaHoras} horas`;
+  } else {
+    return `Hace ${diferenciaDias} días`;
+  }
+}
+
+function crearItemHistorial(entrada) {
+  const li = document.createElement("li");
+
+  const textoPrincipal = document.createElement("p");
+  textoPrincipal.textContent = `${entrada.valor} ${entrada.origen} → ${entrada.destino}`;
+
+  const textoSecundario = document.createElement("p");
+  textoSecundario.textContent = formatearTiempoTranscurrido(entrada.fecha);
+
+  li.appendChild(textoPrincipal);
+  li.appendChild(textoSecundario);
+
+  return li;
+}
+
+function mostrarHistorial() {
+  const historialGuardado = localStorage.getItem("historial");
+  const historial = historialGuardado ? JSON.parse(historialGuardado) : [];
+
+  listaHistorial.innerHTML = "";
+
+  historial.forEach((entrada) => {
+    const li = crearItemHistorial(entrada);
+    listaHistorial.appendChild(li);
+  });
+}
+
+cambiarPestana(tipoActivo);
+mostrarHistorial();

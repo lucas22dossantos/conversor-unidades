@@ -54,8 +54,8 @@ intercambio rápido entre ambas y un historial de conversiones recientes.
 
 ### Historial
 
-- [ ] Persistencia de conversiones recientes en `localStorage`
-- [ ] Renderizado del historial en la UI
+- [x] Persistencia de conversiones recientes en `localStorage`
+- [x] Renderizado del historial en la UI
 
 ## Aspectos técnicos
 

@@ -195,5 +195,43 @@ function mostrarHistorial() {
   lucide.createIcons();
 }
 
+// Cargar la pestaña y el historial al iniciar
 cambiarPestana(tipoActivo);
 mostrarHistorial();
+
+const botonHistorial = document.getElementById("btn-historial");
+const seccionHistorial = document.querySelector(".historial");
+
+// Ir al historial desde el botón del encabezado
+botonHistorial.addEventListener("click", () => {
+  seccionHistorial.scrollIntoView({ behavior: "smooth" });
+});
+
+const botonConfiguracion = document.getElementById("btn-configuracion");
+const dropdownConfiguracion = document.getElementById("dropdown-configuracion");
+const botonBorrarHistorial = document.getElementById("btn-borrar-historial");
+
+// Controlar el menú de configuración
+botonConfiguracion.addEventListener("click", () => {
+  dropdownConfiguracion.classList.toggle("oculto");
+});
+
+botonBorrarHistorial.addEventListener("click", () => {
+  const confirmado = confirm("¿Seguro que querés borrar el historial?");
+
+  if (confirmado) {
+    localStorage.removeItem("historial");
+    mostrarHistorial();
+  }
+
+  dropdownConfiguracion.classList.add("oculto");
+});
+
+// Cerrar el menú al hacer clic fuera
+document.addEventListener("click", (e) => {
+  const clickDentroDelMenu = e.target.closest(".menu-configuracion");
+
+  if (!clickDentroDelMenu) {
+    dropdownConfiguracion.classList.add("oculto");
+  }
+});

@@ -21,8 +21,17 @@
       </nav>
 
       <div class="header-iconos">
-        <i data-lucide="settings"></i>
-        <i data-lucide="history"></i>
+        <div class="menu-configuracion">
+          <button id="btn-configuracion" aria-label="Opciones de configuración">
+            <i data-lucide="settings"></i>
+          </button>
+          <div id="dropdown-configuracion" class="dropdown oculto">
+            <button id="btn-borrar-historial">Borrar historial</button>
+          </div>
+        </div>
+        <button id="btn-historial" aria-label="Ir al historial">
+          <i data-lucide="history"></i>
+        </button>
       </div>
     </header>
     <main>

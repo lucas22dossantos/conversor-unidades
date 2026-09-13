@@ -43,7 +43,7 @@ intercambio rápido entre ambas y un historial de conversiones recientes.
 
 - [x] Definición de API externa de tasas de cambio
 - [x] Función de conversión de moneda (`moneda.js`)
-- [ ] Manejo de errores de red y estado de carga
+- [x] Manejo de errores de red y estado de carga
 
 ### Interacción y UI
 

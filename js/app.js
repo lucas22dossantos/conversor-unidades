@@ -85,26 +85,33 @@ botonesTab.forEach((boton) => {
 
 // Convertir el valor usando la función de la pestaña activa
 botonConvertir.addEventListener("click", async () => {
+  resultadoTexto.textContent = "Convirtiendo...";
+
   const valor = parseFloat(inputValor.value);
   const origen = selectOrigen.value;
   const destino = selectDestino.value;
 
   const config = configuraciones[tipoActivo];
-  const resultado = await config.funcion(valor, origen, destino);
 
-  // Mostrar el resultado en el HTML
-  resultadoTexto.textContent = resultado;
+  try {
+    const resultado = await config.funcion(valor, origen, destino);
 
-  guardarEnHistorial({
-    valor: valor,
-    origen: origen,
-    destino: destino,
-    resultado: resultado,
-    tipo: tipoActivo,
-    fecha: new Date(),
-  });
+    // Mostrar el resultado en el HTML
+    resultadoTexto.textContent = resultado;
 
-  mostrarHistorial();
+    guardarEnHistorial({
+      valor: valor,
+      origen: origen,
+      destino: destino,
+      resultado: resultado,
+      tipo: tipoActivo,
+      fecha: new Date(),
+    });
+
+    mostrarHistorial();
+  } catch (error) {
+    resultadoTexto.textContent = "Ocurrió un error al convertir.";
+  }
 });
 
 // Intercambiar las unidades de origen y destino
@@ -143,8 +150,22 @@ function formatearTiempoTranscurrido(fecha) {
   }
 }
 
+const iconosPorTipo = {
+  longitud: "ruler",
+  peso: "weight",
+  temperatura: "thermometer",
+  moneda: "dollar-sign",
+};
+
 function crearItemHistorial(entrada) {
   const li = document.createElement("li");
+
+  const divIcono = document.createElement("div");
+  divIcono.className = "historial-icono";
+  divIcono.innerHTML = `<i data-lucide="${iconosPorTipo[entrada.tipo]}"></i>`;
+
+  const divTexto = document.createElement("div");
+  divTexto.className = "historial-texto";
 
   const textoPrincipal = document.createElement("p");
   textoPrincipal.textContent = `${entrada.valor} ${entrada.origen} → ${entrada.destino}`;
@@ -152,8 +173,11 @@ function crearItemHistorial(entrada) {
   const textoSecundario = document.createElement("p");
   textoSecundario.textContent = formatearTiempoTranscurrido(entrada.fecha);
 
-  li.appendChild(textoPrincipal);
-  li.appendChild(textoSecundario);
+  divTexto.appendChild(textoPrincipal);
+  divTexto.appendChild(textoSecundario);
+
+  li.appendChild(divIcono);
+  li.appendChild(divTexto);
 
   return li;
 }
@@ -168,6 +192,7 @@ function mostrarHistorial() {
     const li = crearItemHistorial(entrada);
     listaHistorial.appendChild(li);
   });
+  lucide.createIcons();
 }
 
 cambiarPestana(tipoActivo);

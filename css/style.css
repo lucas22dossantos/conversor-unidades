@@ -6,6 +6,7 @@
   --color-texto: #121c2a;
   --color-texto-secundario: #4a4455;
   --color-primario: #630ed4;
+  --color-primario-suave: rgba(99, 14, 212, 0.15);
   --color-texto-primario: #ffffff;
   --color-borde: #ccc3d8;
   --color-error: #ba1a1a;
@@ -177,6 +178,11 @@ button {
   color: var(--color-primario);
 }
 
+.historial {
+  max-width: 650px;
+  margin: var(--espacio-lg) auto var(--espacio-xl) auto;
+}
+
 .historial h2 {
   font-size: var(--tamano-headline-lg);
   font-weight: var(--peso-negrita);
@@ -188,4 +194,38 @@ button {
   background-color: var(--color-surface);
   border-radius: var(--radio-tarjeta);
   padding: var(--espacio-md) var(--espacio-lg);
+}
+
+.historial li {
+  display: flex;
+  align-items: center;
+  gap: var(--espacio-md);
+  padding: var(--espacio-md) 0;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.historial li:last-child {
+  border-bottom: none;
+}
+
+.historial-icono {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radio-circular);
+  background-color: var(--color-primario-suave);
+  color: var(--color-primario);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.historial-texto p:first-child {
+  font-weight: var(--peso-negrita);
+  color: var(--color-texto);
+}
+
+.historial-texto p:last-child {
+  font-size: var(--tamano-label-md);
+  color: var(--color-texto-secundario);
 }

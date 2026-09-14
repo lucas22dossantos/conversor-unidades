@@ -61,7 +61,6 @@ intercambio rápido entre ambas y un historial de conversiones recientes.
 
 | Concepto                          | Aplicación en el proyecto                                     |
 | --------------------------------- | ------------------------------------------------------------- |
-| `reduce`                          | Procesamiento de datos del historial de conversiones          |
 | Destructuring                     | Extracción de propiedades de objetos y arrays                 |
 | Spread/rest (`...`)               | Combinación y clonado de datos sin mutación                   |
 | Closures                          | Configuración/unidad por defecto recordada entre conversiones |
@@ -80,11 +79,11 @@ conversor-unidades/
 │   └── style.css
 ├── js/
 │   ├── app.js
-│   ├── conversores/
-│   │   ├── longitud.js
-│   │   ├── peso.js
-│   │   └── temperatura.js
-│   └── historial.js
+│   └── conversores/
+│      ├── longitud.js
+│      ├── peso.js
+│      ├── temperatura.js
+│      └── moneda.js
 └── docs/
     ├── DESIGN-SYSTEM.md
     └── preview.png

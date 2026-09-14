@@ -97,7 +97,8 @@ botonConvertir.addEventListener("click", async () => {
     const resultado = await config.funcion(valor, origen, destino);
 
     // Mostrar el resultado en el HTML
-    resultadoTexto.textContent = resultado;
+    // resultadoTexto.textContent = resultado;
+    resultadoTexto.textContent = `${valor} ${origen} = ${resultado} ${destino}`;
 
     guardarEnHistorial({
       valor: valor,
